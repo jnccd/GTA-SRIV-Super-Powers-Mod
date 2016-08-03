@@ -17,12 +17,11 @@ namespace GTA_Mod_Project
         int PerformanceHeavyOperationCooldown;
         #endregion
         #region Mess with them
-        float SuperSprintSpeed = 30f;
+        float SuperSprintSpeed = 40f;
         float SuperSprintSpeedAntiHalfLife = 30;
         float SuperSprintRepelRangeSquared = 49;
         float GlidingAccel = 3f;
-        float GlidingUplift = 0.07f;
-        float SuperJumpStrengthMultiplier = 14f;
+        float GlidingUplift = 0.08f;
         #endregion
         #region Some Objects and Lists
         Random RDM = new Random();
@@ -48,18 +47,18 @@ namespace GTA_Mod_Project
                 //if (Game.Player.IsAiming) { Game.TimeScale = 0.25f; } else { Game.TimeScale = 1f; }
                 if (Game.Player.Character.Position.Z < 2.75f) { Game.Player.Character.Velocity = 
                         new Vector3(Game.Player.Character.Velocity.X, Game.Player.Character.Velocity.Y, -(Game.Player.Character.Position.Z - 2.75f)); }
-                if (Game.Player.Character.HeightAboveGround < -Game.Player.Character.Velocity.Z * 0.1f) { Game.Player.Character.Task.ClearAllImmediately(); }
+                if (Game.Player.Character.HeightAboveGround < -Game.Player.Character.Velocity.Z * 0.25f) { Game.Player.Character.Task.ClearAllImmediately(); }
 
                 // Superjump
                 if (!Game.IsKeyPressed(Keys.Space) && SpaceWasDownLastFrame && !Game.Player.Character.IsInAir)
-                { Game.Player.Character.ApplyForce(new Vector3(0, 0, 150)); SuperJumpTimer = 1; Game.Player.Character.Weapons.Give(GTA.Native.WeaponHash.Parachute, 5, false, true); }
+                { Game.Player.Character.ApplyForce(new Vector3(0, 0, 175)); SuperJumpTimer = 1; Game.Player.Character.Weapons.Give(GTA.Native.WeaponHash.Parachute, 5, false, true); }
                 if (Game.IsKeyPressed(Keys.Space) && Game.Player.Character.Velocity.Z <= 15 && !Game.Player.Character.IsInAir)
                 { SuperJumpChargeTimer += 1 + SuperJumpChargeTimer / 50; }
                 if (SuperJumpChargeTimer > 150) { SuperJumpChargeTimer = 150; }
                 if (SuperJumpChargeTimer > 25) { UI.ShowSubtitle("Super-Jump: " + SuperJumpChargeTimer.ToString()); }
-                if (SuperJumpTimer == 14)
+                if (SuperJumpTimer == 15)
                 { Game.Player.Character.Velocity = new Vector3(Game.Player.Character.Velocity.X, Game.Player.Character.Velocity.Y, -0.2f); }
-                if (SuperJumpTimer == 17) { Game.Player.Character.ApplyForce(new Vector3(0, 0, SuperJumpChargeTimer + 5)); SuperJumpChargeTimer = 25; }
+                if (SuperJumpTimer == 18) { Game.Player.Character.ApplyForce(new Vector3(0, 0, SuperJumpChargeTimer + 5)); SuperJumpChargeTimer = 25; }
                 if (Game.IsKeyPressed(Keys.Space)) { SpaceWasDownLastFrame = true; } else { SpaceWasDownLastFrame = false; }
                 
                 PerformanceHeavyOperationCooldown--;
