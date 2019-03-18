@@ -31,9 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ScriptHookVDotNet, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Eigene Dateien\Mods &amp; Tools\GTA V\ScriptHookVDotNet.dll</HintPath>
+    <Reference Include="ScriptHookVDotNet">
+      <HintPath>D:\Eigene Dateien\SteamLibrary\SteamApps\common\Grand Theft Auto V\ScriptHookVDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
